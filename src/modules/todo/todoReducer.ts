@@ -4,7 +4,11 @@ export interface TodoState {
     todos: Array<Todo>
 }
 
-export const todoReducer = (state: TodoState, action: TodoActionTypes) : TodoState => { 
+const initialState = { 
+    todos: [{name: 'default one', isCompleted: false, id: 0}]
+}
+export const todoReducer = (state: TodoState = initialState, action: TodoActionTypes) : TodoState => { 
+    console.log('state', state, 'action', action);
     switch(action.type) { 
         case ADD_TODO: 
             return { ...state, todos: [...state.todos, action.payload]}

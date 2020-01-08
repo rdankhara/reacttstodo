@@ -6,8 +6,9 @@ import { Root } from './layout/root';
 import { Add } from './components/Add';
 import { AddTodo } from './modules/todo/AddTodo';
 import { HandleChangeParam } from './modules/types';
-import { configureStore } from './modules/store';
-import { Provider } from 'react-redux';
+import { configureStore, AppState } from './modules/store';
+import { Provider, connect } from 'react-redux';
+import { ConnectedTodosInterface } from './modules/todo/TodosInterface';
 
 type AppProps = { 
     message: string
@@ -21,12 +22,11 @@ const message = style({
     background: 'orange'
 })
 
-type AppState = { 
+type ComponentState = { 
     name: string;
 }
 
-class App extends React.Component<AppProps, AppState> { 
-
+class App extends React.Component<AppProps, ComponentState> { 
 
     constructor(props: AppProps){
         super(props);
@@ -38,7 +38,6 @@ class App extends React.Component<AppProps, AppState> {
 
     onChangeHandler = (e:React.SyntheticEvent<{value: string}>) => { 
         const name = e.currentTarget.value;
-        console.log('value', name)
         this.setState({name: e.currentTarget.value})
     }
 
@@ -49,10 +48,16 @@ class App extends React.Component<AppProps, AppState> {
             <>
             <Add number1={2} number2={4} ></Add>
             <Greetings name="rajnikant" />
-            <div className={message}>{this.props.message} </div>
-            <AddTodo name={this.state.name} handleChange={this.onChangeHandler} isCompleted={false} />
+            {/* <AddTodo name={this.state.name} handleChange={this.onChangeHandler} isCompleted={false} /> */}
+            <ConnectedTodosInterface />
             </>
         )
+    }
+}
+
+const mapStateToProps = (state: AppState) => { 
+    return { 
+        todos: state.todos
     }
 }
 

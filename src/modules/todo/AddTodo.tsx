@@ -10,24 +10,31 @@ const todoContainer = style({
 const todoName = style({
     padding: '5px 10px'
 })
+
 export interface AddTodoProps {
     name: string,
-    isCompleted: boolean 
-    handleChange: (event: HandleChangeParam) => void
+    setName: React.Dispatch<React.SetStateAction<string>>,
+    add: (name: string) => void
 }
 
-export const AddTodo: React.FC<AddTodoProps> = ({name, isCompleted, handleChange}) =>
+export const AddTodo: React.FC<AddTodoProps> = ({name, setName, add}) =>
  { 
+     const onClickHandler = ()=> { 
+         add(name);
+     }
+     const onChangeHandler = (e: HandleChangeParam ) => {
+         setName(e.currentTarget.value)
+     }
      return (
          <div>
              <h3>Todo</h3>
              <div className={todoContainer}>
              <input value={name}
-                onChange={handleChange}
+                onChange={onChangeHandler}
                 className={todoName}
                 placeholder={"enter todo name"}
              />
-             <button>Add</button>
+             <button onClick={onClickHandler}>Add</button>
              </div>
          </div>
      )

@@ -5,20 +5,26 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -p",
-    "start": "webpack-dev-server -d --content-base ./public",
+    "start": "webpack-dev-server --hot --content-base ./public",
+    "starth": "webpack-dev-server --hot --inline --no-info --content-base ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rajnikant dankhara",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.8.1",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
-    "webpack": "^4.20.0",
+    "typestyle": "^2.0.4",
+    "webpack": "^4.41.4",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.2.4"
   }
 }

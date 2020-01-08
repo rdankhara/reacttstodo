@@ -24,7 +24,7 @@ const NumberLabel:React.FC<{value: number}> = ({value}) => {
 const NumericInput:React.FC<{value: number}> = ({value}) => { 
     return (
         <>
-        <input className={number} value={value} ></input>
+        <input className={number} value={value} />
         </>
     )
 }

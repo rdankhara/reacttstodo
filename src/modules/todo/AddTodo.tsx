@@ -1,6 +1,7 @@
 import React from 'react';
 import { HandleChangeParam } from '../types';
 import { style } from 'typestyle';
+const styles = require('./AddTodo.less');
 
 const todoContainer = style({ 
     display: 'flex', 
@@ -26,7 +27,7 @@ export const AddTodo: React.FC<AddTodoProps> = ({name, setName, add}) =>
          setName(e.currentTarget.value)
      }
      return (
-         <div>
+         <div className={styles.AddTodo}> 
              <h3>Todo</h3>
              <div className={todoContainer}>
              <input value={name}

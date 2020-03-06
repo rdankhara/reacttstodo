@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import {style, media} from 'typestyle';
-
+import * as styles from './root.less';
+import { DrawerMenu } from './drawerMenu';
+import { Header } from './header';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 const background = { 
     background: 'orange'
 }
-const root = style(
-    background,
+const root = style(background,
     {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
+        height: '100vh',
         transition: 'font-size 0.5s'
     },
-    media({minWidth: 500, maxWidth: 700}, {fontSize: '30px'}),
-    media({minWidth: 701}, { fontSize: '50px'})
+    // media({minWidth: 500, maxWidth: 700}, {fontSize: '30px'}),
+    // media({minWidth: 701}, { fontSize: '50px'})
 )
 
-const headerClass = style({
-    height: '200px'
-})
-
 type RootProps = { 
-    header : React.Component
 }
 
 type RootState = { 
@@ -35,21 +33,24 @@ class Root extends React.Component<RootProps, RootState> {
     }
 
     render () {
-        const { header } = this.props;
         return (
-            <div className={root}>
-                <header className={headerClass}>
-                    {header}
-                </header>
-                <aside className="leftAside"></aside>                
-                <body className="body">
-
-                </body>
+            <main className={styles.main}>
+                <Header />
+                <BrowserRouter>
+                    <DrawerMenu />
+                    <Switch>
+                        <Route path="/" exact></Route>
+                    </Switch>
+                </BrowserRouter>
+                
+                <div className="body">
+                    body content here
+                </div>
                 <aside className="rightAside"></aside>
                 <footer className="footer">
 
                 </footer>
-            </div>
+            </main>
         )
     }
 }

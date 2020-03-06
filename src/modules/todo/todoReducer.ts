@@ -18,6 +18,6 @@ export const todoReducer = (state: TodoState = initialState, action: TodoActionT
             const newTodos= state.todos.map(todo => todo.id !== action.payload.id ? todo : action.payload);
             return { ...state, todos: newTodos }
         default: 
-            return state;
+            return {...state, ...initialState};
     }
 }

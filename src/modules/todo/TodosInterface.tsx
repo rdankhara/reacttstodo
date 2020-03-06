@@ -6,20 +6,22 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Todo } from './types';
 import { ConnectedTodoList } from './TodoList';
+//const styles = require('./TodosInterface.less');
+import './TodosInterface.less';
 
 type TodosProps = { 
     addTodos: typeof addTodo,
     todos: Array<Todo>
 }
-const TodosInterface: React.FunctionComponent<TodosProps> = (props: TodosProps) => { 
+const TodosInterface: React.FC<TodosProps> = (props: TodosProps) => { 
     const [name, setName] = useState('');
     const add = (name: string ) => { 
-        console.log('name', name, 'todos', props.todos);
-        props.addTodos({ name, isCompleted: false, id: props.todos.length + 1});
+        props.addTodos({ name, isCompleted: false, id:  1});
+        
     }
     return (
-        <div>
-            <h3>Todos</h3>
+        <div id="root" className={'TodosInterface'}>
+            <h3 className={'h3'}>Todos</h3>
             <AddTodo name={name} setName={setName} add={add}/>
             <ConnectedTodoList /> 
         </div>

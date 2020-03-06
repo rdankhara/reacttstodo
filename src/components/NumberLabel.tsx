@@ -1,5 +1,6 @@
 import React from 'react';
 import {style} from 'typestyle';
+import Input from '@material-ui/core/Input';
 
 const number = style({
     border: '1px solid gray',
@@ -13,6 +14,7 @@ const number = style({
     marginTop: 'auto'
 })
 
+
 const NumberLabel:React.FC<{value: number}> = ({value}) => { 
     return (
         <>
@@ -21,12 +23,4 @@ const NumberLabel:React.FC<{value: number}> = ({value}) => {
     )
 }
 
-const NumericInput:React.FC<{value: number}> = ({value}) => { 
-    return (
-        <>
-        <input className={number} value={value} />
-        </>
-    )
-}
-
-export { NumberLabel, NumericInput }
+export { NumberLabel }

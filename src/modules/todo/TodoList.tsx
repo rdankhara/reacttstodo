@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 }
 
 const ConnectedTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
-export { ConnectedTodoList, TodoList};
+export { ConnectedTodoList};

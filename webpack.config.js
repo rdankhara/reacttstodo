@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = { 
     entry: './src/app.tsx',
     devtool: 'source-map',
@@ -6,7 +7,7 @@ module.exports = {
         filename: 'build/app.js'
     },
     resolve: { 
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.less']
     }, 
     module: {
         rules: [
@@ -24,6 +25,20 @@ module.exports = {
                 enforce: "pre",
                 test: /\.js$/,
                 loader: "source-map-loader"
+            },
+            {
+                test: /\.(?:le|c)ss$/,
+                use: [
+                  {
+                    loader: 'style-loader', // creates style nodes from JS strings
+                  },
+                  {
+                    loader: 'css-loader', // translates CSS into CommonJS
+                  },
+                  {
+                    loader: 'less-loader', // compiles Less to CSS
+                  },
+                ],
             }
         ]
     },

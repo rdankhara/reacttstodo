@@ -1,0 +1,89 @@
+.card { 
+    position: relative;
+    display: inline-flex;
+    background-color: white;
+    border: 1px solid salmon;
+    min-height: 150px;
+    min-width: 250px;
+    margin: 20px 10px 10px 0px;
+    box-shadow: 1px 1px 8px 3px #d96969;
+    transition: all 1s ease;
+    flex-direction: column;
+}
+
+.bg2 { 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(54, 128, 128);
+    transition: all 1s reverse ease;
+}
+
+.bg1 {
+    position: absolute;
+    background-color: violet;
+    height: 100%;
+    width: 100%;
+}
+
+.card-container { 
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: burlywood;
+}
+
+.chrome { 
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.chrome .actions {
+    display: flex;
+}
+
+.innerCard { 
+    display: flex;
+    background-color: white;
+    height: 150;
+    width: 250px;
+    margin: 0px;
+    transition: all 2s ease;
+}
+
+.flash-bg { 
+    animation: bg 2s ease;
+}
+/* 
+.innerCard:hover { 
+    animation: bg 2s ease;
+}
+
+.card:hover { 
+    animation: anBak 2s ease;
+} */
+
+@keyframes anBak { 
+    50% { 
+        padding: 10px;
+        box-shadow: 1px 1px 8px 3px #cfe06e;
+        background-color: rgb(54, 128, 128);
+
+    }
+    100% { 
+        padding: 0px;
+        box-shadow: 1px 1px 8px 3px #d96969;
+        background-color: white;
+    }
+}
+
+@keyframes bg { 
+    50% { 
+        background-color: rgb(54, 128, 128);
+    }
+    100% {
+        background-color: white;
+    }
+}

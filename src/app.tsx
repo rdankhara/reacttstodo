@@ -1,18 +1,14 @@
-import * as  React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Greetings } from './Greetings';
 import { style } from 'typestyle';
 import { Root } from './layout/root';
 import { Add } from './components/Add';
-import { AddTodo } from './modules/todo/AddTodo';
-import { HandleChangeParam } from './modules/types';
 import { configureStore, AppState } from './modules/store';
-import { Provider, connect } from 'react-redux';
+import { Provider, connect, ConnectedProps } from 'react-redux';
 import { ConnectedTodosInterface } from './modules/todo/TodosInterface';
-
-type AppProps = { 
-    message: string
-}
+import { Workspace } from './components/workspace/Workspace';
+import { Header } from './layout/header';
 
 //const App:React.SFC<AppProps> = ({message}) => <div>{message}</div>
 const message = style({ 
@@ -26,9 +22,10 @@ type ComponentState = {
     name: string;
 }
 
-class App extends React.Component<AppProps, ComponentState> { 
+type Props = { }
+class App extends React.Component<Props, ComponentState> { 
 
-    constructor(props: AppProps){
+    constructor(props: Props){
         super(props);
         this.state = { 
             name: ''
@@ -50,6 +47,9 @@ class App extends React.Component<AppProps, ComponentState> {
             <Greetings name="rajnikant" />
             {/* <AddTodo name={this.state.name} handleChange={this.onChangeHandler} isCompleted={false} /> */}
             <ConnectedTodosInterface />
+            <Workspace>
+                
+            </Workspace>
             </>
         )
     }
@@ -62,11 +62,15 @@ const mapStateToProps = (state: AppState) => {
 }
 
 const store = configureStore();
+
 const AppRoot = () => (
     <Provider store={store}>
-        <App message="how are you" />
+        <Root >
+            <App />
+        </Root>
     </Provider>
 )
+
 ReactDOM.render(
     <AppRoot />, 
     document.getElementById('root')
